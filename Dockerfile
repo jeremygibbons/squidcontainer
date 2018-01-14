@@ -2,11 +2,11 @@ FROM alpine:3.7
 
 LABEL maintainer="Jeremy Gibbons <jeremy.gibbons@laposte.net>"
 
-ENV AWS_CLI_VERSION 1.14.24 \
-    SQUID_VERSION 3.5.23 \
-    SQUID_CACHE_DIR /var/spool/squid \
-    SQUID_LOG_DIR /var/log/squid \
-    SQUID_USER proxy
+ENV AWS_CLI_VERSION 1.14.24
+ENV SQUID_VERSION 3.5.23
+ENV SQUID_CACHE_DIR /var/spool/squid
+ENV SQUID_LOG_DIR /var/log/squid
+ENV SQUID_USER proxy
 
 
 RUN apk update \
