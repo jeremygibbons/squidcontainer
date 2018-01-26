@@ -14,6 +14,7 @@ create_cache_dir() {
 
 create_log_dir
 create_cache_dir
+ln -sf /proc/1/fd/1 ${SQUID_LOG_DIR}/access.log
 
 # allow arguments to be passed to squid3
 if [[ ${1:0:1} = '-' ]]; then
