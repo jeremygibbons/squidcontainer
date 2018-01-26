@@ -1,20 +1,13 @@
 #!/bin/sh
 set -e
 
-create_log_dir() {
-  mkdir -p ${SQUID_LOG_DIR}
-  chmod -R 755 ${SQUID_LOG_DIR}
-  chown -R ${SQUID_USER}:${SQUID_USER} ${SQUID_LOG_DIR}
-}
-
 create_cache_dir() {
   mkdir -p ${SQUID_CACHE_DIR}
   chown -R ${SQUID_USER}:${SQUID_USER} ${SQUID_CACHE_DIR}
 }
 
-create_log_dir
 create_cache_dir
-ln -sf /proc/1/fd/1 ${SQUID_LOG_DIR}/access.log
+
 
 # allow arguments to be passed to squid3
 if [[ ${1:0:1} = '-' ]]; then
