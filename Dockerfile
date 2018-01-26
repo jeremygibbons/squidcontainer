@@ -15,7 +15,7 @@ RUN apk update \
     && rm -rf /var/cache/apk/* \
 	&& wget -q https://s3.amazonaws.com/jgisquidtest/squid3.conf -O squid.conf \
 	&& mv /etc/squid/squid.conf /etc/squid/squid.conf.dist \
-	&& install -m644 squid.conf /etc/squid/squid.conf
+	&& install -m644 squid.conf /etc/squid/squid.conf \
    && mkdir -p ${SQUID_LOG_DIR} \
    && chmod -R 755 ${SQUID_LOG_DIR} \
    && chown -R ${SQUID_USER}:${SQUID_USER} ${SQUID_LOG_DIR} \
