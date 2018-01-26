@@ -8,7 +8,7 @@ ENV SQUID_CACHE_DIR /var/spool/squid
 ENV SQUID_LOG_DIR /var/log/squid
 ENV SQUID_USER squid
 
-RUN ln -sf /proc/1/fd/1 /var/log/squidaccess.log
+RUN ln -sf /proc/1/fd/1 /var/log/squid/access.log
 
 RUN apk update \
     && apk add --no-cache squid \
