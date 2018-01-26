@@ -35,4 +35,4 @@ EXPOSE 8080/tcp
 
 USER squid
 
-ENTRYPOINT ["sudo /sbin/entrypoint.sh"]
+ENTRYPOINT ["sudo", "/sbin/entrypoint.sh"]
