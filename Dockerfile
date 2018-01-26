@@ -10,7 +10,7 @@ ENV SQUID_USER squid
 
 RUN mkdir -p ${SQUID_LOG_DIR} \
   && chmod -R 755 ${SQUID_LOG_DIR} \
-  && chown -R ${SQUID_USER}:${SQUID_USER} ${SQUID_LOG_DIR}
+  && chown -R ${SQUID_USER}:${SQUID_USER} ${SQUID_LOG_DIR} \
   && ln -sf /proc/1/fd/1 ${SQUID_LOG_DIR}/access.log
 
 RUN apk update \
