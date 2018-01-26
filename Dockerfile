@@ -8,11 +8,6 @@ ENV SQUID_CACHE_DIR /var/spool/squid
 ENV SQUID_LOG_DIR /var/log/squid
 ENV SQUID_USER squid
 
-RUN mkdir -p ${SQUID_LOG_DIR} \
-  && chmod -R 755 ${SQUID_LOG_DIR} \
-  && chown -R ${SQUID_USER}:${SQUID_USER} ${SQUID_LOG_DIR} \
-  && ln -sf /proc/1/fd/1 ${SQUID_LOG_DIR}/access.log
-
 RUN apk update \
     && apk add --no-cache squid \
 	&& apk --no-cache add python py-pip groff less \
@@ -21,6 +16,11 @@ RUN apk update \
 	&& wget -q https://s3.amazonaws.com/jgisquidtest/squid3.conf -O squid.conf \
 	&& mv /etc/squid/squid.conf /etc/squid/squid.conf.dist \
 	&& install -m644 squid.conf /etc/squid/squid.conf
+   && mkdir -p ${SQUID_LOG_DIR} \
+   && chmod -R 755 ${SQUID_LOG_DIR} \
+   && chown -R ${SQUID_USER}:${SQUID_USER} ${SQUID_LOG_DIR} \
+   && ln -sf /proc/1/fd/1 ${SQUID_LOG_DIR}/access.log
+
 
 COPY entrypoint.sh /sbin/entrypoint.sh
 
