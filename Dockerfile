@@ -17,8 +17,6 @@ RUN apk update \
 	&& mv /etc/squid/squid.conf /etc/squid/squid.conf.dist \
 	&& install -m644 squid.conf /etc/squid/squid.conf
 
-RUN ln -sf /proc/1/fd/1 /var/log/squid/access.log
-
 COPY entrypoint.sh /sbin/entrypoint.sh
 
 RUN chmod 755 /sbin/entrypoint.sh
